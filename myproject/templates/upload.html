@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %} Upload Image |  Video | Both {% endblock %}
+
+    {% block content %}
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            color: #0066cc;
+            text-align: center;
+            animation: navMotion 2s infinite;
+        }
+
+        @keyframes navMotion {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        form {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="submit"] {
+            background-color: #0066cc;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        header {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Header content goes here -->
+        <h1>Upload</h1>
+    </header>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="image">Image:</label>
+        <input type="file" name="image" required accept="image/*"><br>
+        <label for="video">Video:</label>
+        <input type="file" name="video" required><br>
+        <label for="text">Text:</label>
+        <textarea name="text" required></textarea><br>
+        <input type="submit" value="User">
+    </form>
+    <script>
+        const imageInput = document.querySelector('input[name="image"]');
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            
+            if (!validImageTypes.includes(fileType)) {
+                alert('Please select a valid image file (JPEG, PNG, GIF).');
+                this.value = '';
+            }
+        });
+    </script>
+    <script>
+        const videoInput = document.querySelector('input[name="video"]');
+        videoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            const fileType = file.type;
+            const validVideoTypes = ['video/mp4', 'video/mpeg', 'video/webm'];
+    
+            if (!validVideoTypes.includes(fileType)) {
+                alert('Please select a valid video file..accept only mp4 files.!');
+                this.value = '';
+            }
+        });
+    </script>
+
+    
+    {% endblock %}
+    
+</body>
+<footer>
+    <!-- Footer content goes here -->
+    <p>@Copy Kiran Kumar Geddi. All rights reserved.</p>
+</footer>
+</html>

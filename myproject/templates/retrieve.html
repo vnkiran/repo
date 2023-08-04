@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Birthday Wishes{% endblock %}</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            color: #0066cc;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #dddddd;
+            margin: 20px 0;
+        }
+        
+        .upload-container {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .upload-container h2 {
+            color: #ff9900;
+            margin-bottom: 10px;
+        }
+        
+        .upload-container img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .upload-container .media {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .upload-container video {
+            width: 320px;
+            height: auto;
+            margin-left: 10px;
+        }
+        
+        .upload-container p {
+            margin-bottom: 10px;
+        }
+        
+        .upload-container .upload-date {
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <h1>Birthday Wishes</h1>
+    {% for i in uploads %}
+    <div class="upload-container">
+        <marquee><h2>wishes from {{ i.name }}</h2></marquee>
+        <div class="upload-media">
+            <img src="{{ i.image.url }}" alt="Image">
+            <video width="320" height="240" controls>
+                <source src="{{ i.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+                <!--if u r get any empty values in database then u got value error like  
+                line no -78 <source src="{{ i.video.url }}" type="video/mp4"> but it is correct syntax, 
+                so u can delete empty values in database then ur project is run smoothly  -->
+            </video>
+        </div>
+        <p>{{ i.text }}</p>
+        <p class="posted_at">Posted Date: {{ i.posted_at }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>

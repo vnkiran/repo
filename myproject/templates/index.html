@@ -1,0 +1,207 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}veena birthday{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/logo1.jpg' %}" sizes="20px">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url("{% static '/images/bgm.png' %}");
+            background-size: 100% auto;
+            background-repeat: repeat;
+            animation: movingBackground 20s linear infinite;
+        }
+
+        @keyframes movingBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+        header {
+            background-color: #e932e9;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .navbar {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .navbar img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            
+        }
+
+        .navbar-links {
+            display: flex;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 0px 3px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card {
+            max-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        footer {
+            background-color: #e932e9;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+    </style>
+    <script src="{% static 'path/to/script.js' %}"></script>
+
+</head>
+<body>
+    <header>
+        <!-- Header content goes here -->
+        <marquee><h1>My App</h1></marquee>
+        <div class="navbar">
+            <img src="{% static '/images/v.png' %}" alt="Logo">
+            <img src="{% static '/images/k.jpeg' %}" alt="Logo">
+            <div class="navbar-links">
+                <a href="http://127.0.0.1:8000/about/">About |</a>
+                <a href="http://127.0.0.1:8000/contact/">Contact Us |</a>
+                <a href="http://127.0.0.1:8000/family/">Family |</a>
+                <a href="http://127.0.0.1:8000/">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="content">
+        <!-- Content goes here -->
+        <div class="card">
+            <img src="{% static '/images/v1.jpg' %}" alt="Image 1">
+            <div class="card-content">
+                <h3>Image 1</h3>
+                <p>
+                    Vivamus et metus in neque rhoncus elementum. 
+                    Maecenas tincidunt vitae turpis eu consequat. 
+                    Pellentesque quis erat ut mauris bibendum facilisis.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static '/images/v1.jpg' %}" alt="Image 2">
+            <div class="card-content">
+                <h3>Image 2</h3>
+                <p>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+                    Nam nec cursus ligula. Curabitur sed nunc ac ipsum faucibus volutpat.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static '/images/file.png' %}" alt="Image 3">
+            <div class="card-content">
+                <h3>Image 3</h3>
+                <p>
+                    Integer laoreet fermentum efficitur. Integer tincidunt bibendum sapien ac eleifend. 
+                    Nunc dictum congue massa, sit amet tristique nisi feugiat ac.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static '/images/file.png' %}" alt="Image 4">
+            <div class="card-content">
+                <h3>Image 4</h3>
+                <p>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+                    Etiam eu justo vel quam sodales auctor. 
+                    Nunc et tempor enim. Duis nec nunc tincidunt, gravida elit id, congue mi. 
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static '/images/file.png' %}" alt="Image 5">
+            <div class="card-content">
+                <h3>Image 5</h3>
+                <p>
+                    Praesent id dolor eu sapien sagittis vestibulum. 
+                    Donec quis leo at ligula pellentesque iaculis. 
+                    Vestibulum id ante euismod, rhoncus orci sit amet, facilisis tellus.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static '/images/image6.jpg' %}" alt="Image 6">
+            <div class="card-content">
+                <h3>Image 6</h3>
+                <p>
+                    Fusce iaculis lorem quis tortor volutpat, id egestas justo vulputate. 
+                    Nam fermentum justo ac nisi vulputate, et mattis quam ultrices. 
+                    Etiam non fermentum nisl.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer content goes here -->
+        <p>@Copy Kiran Kumar Geddi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

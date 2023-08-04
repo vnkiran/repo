@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .image-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .image-card .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(223, 96, 206, 0.8);
+    color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .image-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .image-card:hover .content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Function to scroll the screen when hovering over an image card
+  function scrollScreen(event) {
+    const imageCard = event.currentTarget;
+    const cardRect = imageCard.getBoundingClientRect();
+    const scrollOffset = cardRect.top - (window.innerHeight / 2) + (cardRect.height / 2);
+    window.scrollBy({
+      top: scrollOffset,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+<div class="image-grid">
+  <div class="image-card">
+    <img src="{% static 'images/v1.jpg' %}" alt="About Image">
+    <div class="content">
+      <h3>About : </h3>
+      <p><b>Miss. Geddi Venna Madhuri</b> <small>(MSK)</small></p>
+      <p>DOB: 01-11-1996</p>
+      <p>AP Govt. Employee</p>
+      <p><small>Yekollu Gramasachivalayam, Tirupati dt, AP</small></p>
+      
+
+
+
+
+    
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="{% static 'images/study.jpg' %}" alt="Study Image">
+    <div class="content">
+      <h3>Study Content</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="{% static 'images/v.png' %}" alt="Job Image">
+    <div class="content">
+      <h3>Job Content</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="{% static 'images/parent.jpg' %}" alt="Parent Image">
+    <div class="content">
+      <h3>Parent Content</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+
+  <div class="image-card">
+    <img src="{% static 'images/another_image.jpg' %}" alt="Another Image">
+    <div class="content">
+      <h3>Another Content</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

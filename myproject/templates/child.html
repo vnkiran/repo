@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+<header>
+    <!-- Header content goes here -->
+    <marquee><h1>My App</h1></marquee>
+    <div class="navbar">
+        <img src="{% static 'images/v.png' %}" alt="Logo">
+        <img src="{% static 'images/k.jpeg' %}" alt="Logo">
+        <div class="navbar-links">
+            <a href="#">About |</a>
+            <a href="#">Contact Us |</a>
+            <a href="http://127.0.0.1:8000/family/">Family |</a>
+            <a href="http://127.0.0.1:8000/">Home</a>
+        </div>
+    </div>
+</header>
+
+<div class="family-members">
+    <!-- Family member cards with images and content -->
+    <!-- Add the member cards here -->
+</div>
+{% endblock %}

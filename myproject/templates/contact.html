@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+
+<div class="contact-form">
+  <h2>Contact Us</h2>
+  
+  <!-- Display thank you message if any -->
+  {% if messages %}
+    <div class="alert alert-success">
+      {{ messages }}
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required>
+    </div>
+    <button type="submit" value="Contact" id="submit-btn">Submit</button>
+  </form>
+  
+  <!-- Display the default office address on Google Maps -->
+  <div id="map" style="height: 400px; width: 100%;"></div>
+  <script>
+    // Replace 'Chillakur (vi), Tirupati (dt), Andhrapradesh, pin-524412, India.' with your actual default office address
+    const defaultOfficeAddress = 'Chillakur (vi), Tirupati (dt), Andhrapradesh, pin-524412, India.';
+
+    // Initialize Google Maps
+    function initMap() {
+      const geocoder = new google.maps.Geocoder();
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 0, lng: 0 },
+        zoom: 16
+      });
+
+      // Geocode the address and set the marker on the map
+      geocoder.geocode({ address: defaultOfficeAddress }, (results, status) => {
+        if (status === 'OK') {
+          map.setCenter(results[0].geometry.location);
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          console.error('Geocode was not successful for the following reason:', status);
+        }
+      });
+    }
+
+    // Add an event listener to the form submission to show the alert
+    document.querySelector('.contact-form form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      showSubmitAlert();
+    });
+
+    // Function to show the submit alert
+    function showSubmitAlert() {
+      alert('Thank you for submitting the form!');
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWx8vyxQqsMwA8mgpCKeoW9kGSqEmi2pA&callback=initMap"></script>
+</div>
+{% endblock %}
+
+  
+
