@@ -4,7 +4,7 @@ from django.db import models
 class User(models.Model):
     name = models.CharField(max_length=30)
     image = models.ImageField(upload_to='media/images',null=True)
-    video = models.FileField(upload_to='media/videos/',null=True)
+    video = models.FileField(upload_to='media/videos/',null=True, blank=True)
     text = models.TextField()
     posted_at = models.DateTimeField(auto_now_add=True)
 

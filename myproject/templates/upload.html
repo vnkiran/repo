@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% load static %}
+
 
 
 <!DOCTYPE html>
@@ -7,130 +11,94 @@
 
     {% block content %}
     <style>
-        body {
-            background-color: #f2f2f2;
-            color: #333333;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        h1 {
-            color: #0066cc;
-            text-align: center;
-            animation: navMotion 2s infinite;
-        }
+form {
+        background-color: #444444;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+    }
 
-        @keyframes navMotion {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
+    label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #ff00ff;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        border: 2px solid #ff00ff;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        background-color: #ff00ff22;
+        color: #ffffff;
+        box-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    input[type="submit"] {
+        background-color: #ff00ff;
+        color: #ffffff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #ff0099;
         
-        form {
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
         
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        input[type="text"],
-        input[type="file"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        input[type="submit"] {
-            background-color: #0066cc;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        header {
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        footer {
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
-        }
     </style>
 </head>
 <body>
-    <header>
-        <!-- Header content goes here -->
-        <h1>Upload</h1>
-    </header>
-
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="title">Name:</label>
-        <input type="text" name="name" required><br>
-        <label for="image">Image:</label>
-        <input type="file" name="image" required accept="image/*"><br>
-        <label for="video">Video:</label>
-        <input type="file" name="video" required><br>
-        <label for="text">Text:</label>
-        <textarea name="text" required></textarea><br>
-        <input type="submit" value="User">
-    </form>
-    <script>
-        const imageInput = document.querySelector('input[name="image"]');
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0];
-            const fileType = file.type;
-            const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            
-            if (!validImageTypes.includes(fileType)) {
-                alert('Please select a valid image file (JPEG, PNG, GIF).');
-                this.value = '';
-            }
-        });
-    </script>
-    <script>
-        const videoInput = document.querySelector('input[name="video"]');
-        videoInput.addEventListener('change', function() {
-            const file = this.files[0];
-            const fileType = file.type;
-            const validVideoTypes = ['video/mp4', 'video/mpeg', 'video/webm'];
     
-            if (!validVideoTypes.includes(fileType)) {
-                alert('Please select a valid video file..accept only mp4 files.!');
-                this.value = '';
+    
+        
+    
+        <form method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
+            {% csrf_token %}
+            <label for="title">Name:</label>
+            <input type="text" name="name" required><br>
+            <label for="image">Image:</label>
+            <input type="file" name="image" required accept="image/*"><br>
+            <label for="video">Video:</label>
+            <input type="file" name="video"><br>
+            <label for="text">Text:</label>
+            <textarea name="text" required></textarea><br>
+            <input type="submit" value="User" name="Send Your Wishes">
+        </form>
+    
+        <script>
+            function validateForm() {
+                const imageInput = document.querySelector('input[name="image"]');
+                const videoInput = document.querySelector('input[name="video"]');
+                const imageFile = imageInput.files[0];
+                const videoFile = videoInput.files[0];
+    
+                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                const validVideoTypes = ['video/mp4', 'video/mpeg', 'video/webm'];
+    
+                if (imageFile && !validImageTypes.includes(imageFile.type)) {
+                    alert('Please select a valid image file (JPEG, PNG, GIF).');
+                    return false;
+                }
+    
+                if (videoFile && !validVideoTypes.includes(videoFile.type)) {
+                    alert('Please select a valid video file (MP4, MPEG, WebM).');
+                    return false;
+                }
+    
+                return true; // Proceed with form submission
             }
-        });
-    </script>
-
+        </script>
     
     {% endblock %}
     

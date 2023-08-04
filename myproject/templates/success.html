@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% load static %}
+
 
 
 {% block title %}Success{% endblock %}
@@ -12,8 +16,25 @@
         padding: 0;
     }
     
-    h1 {
-        color: #0066cc;
+    b {
+        color: #e92dd0; /* Green color for success */
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(116, 243, 32, 0.808);
+        animation: scaleUp 2s ease-in-out;
+    }
+
+    @keyframes scaleUp {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
     
     p {
@@ -21,7 +42,7 @@
     }
 </style>
 
-<h1>Success</h1>
-<p>Your upload was successful!..Thank you</p>
-<p><a href="http://127.0.0.1:8000/retrieve/" target="_blank">Preview uploaded images and videos</a></p>
+
+<p><b>Your wishes were successfully sent... Thank you..!</b></p>
+<h3><a href="http://127.0.0.1:8000/retrieve/" target="_blank">Preview uploaded wishes, images and videos</a></h3>
 {% endblock %}

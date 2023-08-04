@@ -91,13 +91,20 @@ def upload(request):
         image = request.FILES.get('image')
         video = request.FILES.get('video')
         text = request.POST.get('text')
+
+        if video:
+            # Process the video file if uploaded
+            pass
+        else:
+            video = None
+
+
         data = User.objects.create(name=name, image=image, video=video, text=text)
+        data.save()
                 
         return render(request, 'success.html')
                
     return render(request, 'upload.html')
-
-
 
 def retrieve(request):
     uploads = User.objects.all().order_by('-posted_at')

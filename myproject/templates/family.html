@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+
 <style>
     /* Add your specific styles for family members here */
     /* Example: .family-members, .member-card, etc. */
@@ -11,100 +12,100 @@
     /* For example: */
  
 
-
     .family-members {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-        flex: 1; /* This will make the family members section flexible and take available space */
-        overflow-y: auto; /* This will add a vertical scrollbar if the content overflows */
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex: 1; /* This will make the family members section flexible and take available space */
+    overflow-y: auto; /* This will add a vertical scrollbar if the content overflows */
+}
 
-    .member-card {
-        max-width: 300px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+.member-card {
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
-    .member-card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
+.member-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
-    .member-card-content {
-        padding: 20px;
-        opacity: 0; /* Initially hide the content */
-        transform: translateY(100%); /* Initially move the content below the card */
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    }
+.member-card-content {
+    padding: 20px;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
 
-    .member-name {
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-    }
+.member-name {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
 
-    .member-relation {
-        color: #666;
-        font-style: italic;
-        margin-bottom: 15px;
-    }
+.member-relation {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+}
 
-    .member-card-content p {
-        color: #444;
-    }
+.member-card-content p {
+    color: #444;
+}
 
-    /* Custom CSS for animations and hover effects */
-    .member-card {
-        position: relative;
-    }
+/* Custom CSS for animations and hover effects */
+.member-card {
+    position: relative;
+}
 
-    .member-card:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(
-            45deg,
-            rgba(233, 50, 233, 0.7),
-            rgba(233, 50, 233, 0.3)
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
+.member-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        45deg,
+        rgba(233, 50, 233, 0.7),
+        rgba(233, 50, 233, 0.3)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
-    .member-card:hover:before {
-        opacity: 1;
-    }
+.member-card:hover:before {
+    opacity: 1;
+}
 
-    .member-card-content {
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    }
+.member-card-content {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
 
-    .member-card:hover .member-card-content {
-        transform: translateY(0);
-        opacity: 1;
-    }
-</style>
+/* Add flexibility and adjustable lengths on hover */
+.member-card:hover .member-card-content {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 500px; /* Adjust this value as needed */
+    overflow: auto; /* Add a scrollbar if content overflows */
+}</style>
 
 <div class="family-members">
     <!-- Family member cards with images and content -->
     <div class="member-card">
         <img src="{% static '/images/file.png' %}" alt="Father">
         <div class="member-card-content">
-            <h3 class="member-name">Mrs.M Venkata Krishanaiah <small><i>(Rtd.school teacher)</i></small></h3>
+            <h3 class="member-name">M Venkata Krishanaiah <small><i>(Rtd.school teacher)</i></small></h3>
             <p class="member-relation"><u>Relation: Father</u></p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -115,10 +116,10 @@
 
     <!-- Family member cards with images and content -->
     <div class="member-card">
-        <img src="{% static '/images/father.jpg' %}" alt="Father">
+        <img src="{% static '/images/m.jpg' %}" alt="Mother">
         <div class="member-card-content">
-            <h3 class="member-name">Mrs.M Venkata Krishaiah<small>rtd.school teacher</small></h3>
-            <p class="member-relation">Relation: Father</p>
+            <h3 class="member-name">M Manjulamma <small>(Anganwadi school teacher)</small></h3>
+            <p class="member-relation"><u>Relation: Mother</u></p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Duis lacinia mattis metus, et auctor est efficitur a.
@@ -128,10 +129,10 @@
 
     <!-- Family member cards with images and content -->
     <div class="member-card">
-        <img src="{% static '/images/father.jpg' %}" alt="Father">
+        <img src="{% static '/images/s1.jpg' %}" alt="Sister">
         <div class="member-card-content">
-            <h3 class="member-name">Father</h3>
-            <p class="member-relation">Relation: Father</p>
+            <h3 class="member-name">Bhagya sree <small>(House Wife)</small></h3>
+            <p class="member-relation"><u>Relation: Sister </u></p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Duis lacinia mattis metus, et auctor est efficitur a.
