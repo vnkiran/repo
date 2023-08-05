@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'demo10', # Database name
         'USER': 'root',
         'PASSWORD': '8330',
-        'HOST': 'localhost',   # 152.58.197.95  Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # 192.168.43.59  152.58.197.95  157.47.95.153Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
