@@ -1,31 +1,28 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% block content %}
 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    {% block title %} Upload Image |  Video | Both {% endblock %}
-
-    {% block content %}
-    <style>
-form {
-        background-color: #444444;
-        border-radius: 10px;
+<style>
+    form {
+        background-image: url("{% static '/images/mrg1.jpg' %}"); /* Replace 'background.jpg' with your image file */
+        /* Replace 'background.jpg' with your image file */
+        background-size: cover;
+        background-position: top; /* Adjusted to start from the top */
+        background-repeat: no-repeat;
         padding: 20px;
+        border-radius: 10px;
         margin-top: 20px;
         box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
     }
 
     label {
-        display: flex;
+        display: left;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 10px;
         font-weight: bold;
-        color: #ff00ff;
+        color: hwb(308 3% 74%);
     }
 
     input[type="text"],
@@ -36,8 +33,10 @@ form {
         border: 2px solid #ff00ff;
         border-radius: 8px;
         margin-bottom: 15px;
-        background-color: #ff00ff22;
-        color: #ffffff;
+        background-color: #f141f122;
+        color: hsl(0, 0%, 5%);
+        font-weight: bold; /* Make the text bold */
+
         box-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
         transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
@@ -55,24 +54,56 @@ form {
     input[type="submit"]:hover {
         background-color: #ff0099;
         
+    }
+    .custom-input {
+    font-size: 16px; /* Change this value to set the default font size */
+}
+    
+
+        .header-container {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        h2 {
+            width: 450px;
+            color: #ff00ff; /* Set the color for the h1 tag */
+        }
+
         
-    </style>
+
+        img:hover {
+            border-color: #ff0099; /* Change border color on hover */
+            transform: scale(1.1); /* Scale the image slightly on hover for a motion effect */
+        }
+
+    
+</style>
 </head>
 <body>
     
-    
+    <div class="header-container">
+        <h2>Send ur wishes or memories to Veena</h2>
+        <img src="{% static '/images/vc.jpg' %}" style="width: 450px;
         
+        height: 400px;
+        margin-top: 5px;
+        border: 2px solid #ff00ff; /* Add a border for the img tag */
+        border-radius: 4px;
+        transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add a transition effect for the border and transform */
+        cursor: pointer;"alt="Veena Madhuri Image">
+    </div>
     
-        <form method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
+    <form method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
             {% csrf_token %}
             <label for="title">Name:</label>
-            <input type="text" name="name" required><br>
+            <input type="text" name="name" placeholder="enter your name" required><br>
             <label for="image">Image:</label>
             <input type="file" name="image" required accept="image/*"><br>
             <label for="video">Video:</label>
             <input type="file" name="video"><br>
             <label for="text">Text:</label>
-            <textarea name="text" required></textarea><br>
+            <textarea name="text" placeholder="enter your wishes"required></textarea><br>
             <input type="submit" value="User" name="Send Your Wishes">
         </form>
     
@@ -100,11 +131,6 @@ form {
             }
         </script>
     
-    {% endblock %}
+{% endblock %}
     
-</body>
-<footer>
-    <!-- Footer content goes here -->
-    <p>@Copy Kiran Kumar Geddi. All rights reserved.</p>
-</footer>
-</html>
+

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>{% block title %}veena birthday{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{% static '/images/logo1.jpg' %}" sizes="20px">
     <style>
@@ -104,6 +105,37 @@
             padding: 20px;
             text-align: center;
             color: white;
+            position: relative;
+        }
+
+
+        .contact-icon {
+            /* Styling for the contact icon */
+            position: absolute;
+            top: -30px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .contact-icon img {
+            /* Adjust the size of the icon as needed */
+            width: 60px;
+            height: 30;
+            border: groove;
+            border-radius: 90px;
+        }
+        .clock-container {
+            position: absolute;
+            top: 10px;
+            right: 21px;
+            font-size: 14px;
+        }
+        .cimg {
+            position: absolute;
+            top: 24px;
+            right: 198px;
+            font-size: 10px;
+
         }
 
     </style>
@@ -117,16 +149,23 @@
         <div class="navbar">
             <img src="{% static '/images/v.png' %}" alt="Logo">
             <img src="{% static '/images/k.jpeg' %}" alt="Logo">
+            <img src="{% static '/images/mr.jpg' %}" alt="Logo">
             <div class="navbar-links">
                 <a href="http://127.0.0.1:8000/">Home |</a>
                 <a href="http://127.0.0.1:8000/about/">About |</a>
-                <a href="http://127.0.0.1:8000/contact/">Contact Us |</a>
+                <a href="http://127.0.0.1:8000/contact/">Contact us |</a>
                 <a href="http://127.0.0.1:8000/family/">Family |</a>
                 
-                <a href="http://127.0.0.1:8000/upload">Post ur Wishesh |</a>
-                <a href="http://127.0.0.1:8000/retrieve">All Wishes</a>
+                <a href="http://127.0.0.1:8000/upload">Post your wishesh |</a>
+                <a href="http://127.0.0.1:8000/retrieve">All wishes</a>
             </div>
         </div>
+
+        <div class="clock-container" id="live-clock">
+            
+        </div>
+        <div class="cimg"><img src="{% static '/images/clock.png' %}" alt="Clock"></div>
+        
     </header>
 
     <div id="content">
@@ -204,7 +243,38 @@
 
     <footer>
         <!-- Footer content goes here -->
+        <div class="contact-icon">
+            <!-- Replace "path/to/contact-icon.png" with the actual path to your contact icon image -->
+            <a href="http://127.0.0.1:8000/upload/"><img src="{% static '/images/v4.png' %}"  alt="Wish Icon"> </a>
+        </div>
+
         <p>@Copy Kiran Kumar Geddi. All rights reserved.</p>
     </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = now.toLocaleString('default', { month: 'long' });
+            const year = now.getFullYear();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const clockContainer = document.getElementById('live-clock');
+            clockContainer.innerHTML = `
+                <div>${day}</div>
+                <div>${date} ${month}, ${year} | ${hours}:${minutes}:${seconds}</div>
+            `;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial clock update
+        updateClock();
+    </script>
 </body>
 </html>

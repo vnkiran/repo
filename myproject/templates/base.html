@@ -6,6 +6,7 @@
     <link rel="icon" type="image/x-icon" href="{% static 'images/logo1.jpg' %}" sizes="20px">
     <!-- Rest of the CSS, JavaScript, and other head elements -->
     <style>
+        
         body {
             margin: 0;
             padding: 0;
@@ -78,35 +79,75 @@
 
         footer {
             background-color: #e932e9;
-            
-        padding: 20px;
-        text-align: center;
-        position: sticky; /* Changed from 'fixed' to 'sticky' */
-        left: 0;
-        width: 100%;
-        color: white;
-        margin-top: auto; /* Added margin-top to push footer to the bottom */
-        bottom: 0;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
         }
+
+
+        .contact-icon {
+            /* Styling for the contact icon */
+            position: absolute;
+            top: -30px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .contact-icon img {
+            /* Adjust the size of the icon as needed */
+            width: 60px;
+            height: 30;
+            border: groove;
+            border-radius: 90px;
+        }
+        .clock-container {
+            position: absolute;
+            top: 10px;
+            right: 21px;
+            font-size: 14px;
+        }
+        #cim {
+            position: absolute;
+            top: 24px;
+            right: 198px;
+            font-size: 10px;
+
+        }
+        
+    /* right: 10px; Adjust the right position as needed */
+ 
+
     </style>
 </head>
 <body>
     <header>
         <!-- Header content goes here -->
-        <marquee><h1>My App</h1></marquee>
+        <marquee style="top:40px" scrollamount="13"><h1>Happy Birthday Veena Madhuri..! 🎉🎂 May your day be filled with joy, laughter, and wonderful moments.🎁🥳</h1></marquee>
         <div class="navbar">
-            <img src="{% static '/images/v.png' %}" alt="Logo">
-            <img src="{% static '/images/k.jpeg' %}" alt="Logo">
+            <a href="http://127.0.0.1:8000/"> <img src="{% static '/images/nv.jpeg' %}" title="Home"  alt="Logo"> </a>
+            <a href="http://127.0.0.1:8000/about"><img src="{% static '/images/fi.jpg' %}"  title="About" alt="Logo"></a>
+            <a href="http://127.0.0.1:8000/contact/"><img src="{% static '/images/fi2.jpg' %}" title="Contact us" alt="Logo"></a>
+            <a href="http://127.0.0.1:8000/family/"><img src="{% static '/images/fi5.jpg' %}" title="Family" alt="Logo"></a>
+            
+            <a href="http://127.0.0.1:8000/retrieve"><img src="{% static '/images/v.png' %}" title="All wishes"  alt="Logo"></a>
+            <a href="http://127.0.0.1:8000/"><img src="{% static '/images/son.jpg' %}" title="Home" alt="Logo"></a>
+            <a href="http://127.0.0.1:8000/admin" ><img src="{% static '/images/k.jpeg' %}"title="for admin's"  alt="Logo"></a>
+
             <div class="navbar-links">
                 <a href="http://127.0.0.1:8000/">Home |</a>
                 <a href="http://127.0.0.1:8000/about">About |</a>
-                <a href="http://127.0.0.1:8000/contact/">Contact Us |</a>
+                <a href="http://127.0.0.1:8000/contact/">Contact us |</a>
                 <a href="http://127.0.0.1:8000/family/">Family |</a>
-                
-                <a href="http://127.0.0.1:8000/upload">Post ur Wishesh |</a>
-                <a href="http://127.0.0.1:8000/retrieve">All Wishes</a>
+                <a href="http://127.0.0.1:8000/retrieve">All wishes |</a>
+                <a href="http://127.0.0.1:8000/admin" title="for admin's">Login</a>
             </div>
         </div>
+        
+        <div class="clock-container" id="live-clock"></div>
+        <div id="cim"><img src="{% static '/images/clock.png' %}" alt="Clock"></div>
+        
+
     </header>
 
 
@@ -122,8 +163,39 @@
 
     <footer>
         <!-- Footer content goes here -->
-        <p>@Copy Kiran Kumar Geddi. All rights reserved.</p>
+        <!-- Footer content goes here -->
+        <div class="contact-icon">
+            <!-- Replace "path/to/contact-icon.png" with the actual path to your contact icon image -->
+            <a href="http://127.0.0.1:8000/"><img src="{% static '/images/v4.png' %}"  alt="Wish Icon"> </a>
+        </div>
+        <p>@Copy Kiran Kumar Geddi. All rights reserved..specially designed for Veena's birthday..!</p>
     </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const day = days[now.getDay()];
+            const date = now.getDate();
+            const month = now.toLocaleString('default', { month: 'long' });
+            const year = now.getFullYear();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const clockContainer = document.getElementById('live-clock');
+            clockContainer.innerHTML = `
+                <div>${day}</div>
+                <div>${date} ${month}, ${year} | ${hours}:${minutes}:${seconds}</div>
+            `;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial clock update
+        updateClock();
+    </script>
 
 </body>
 </html>

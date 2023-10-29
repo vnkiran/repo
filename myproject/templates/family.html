@@ -24,7 +24,7 @@
 
 .member-card {
     max-width: 300px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -34,7 +34,7 @@
 
 .member-card img {
     width: 100%;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -58,12 +58,33 @@
 }
 
 .member-card-content p {
-    color: #444;
+    color: hsl(0, 3%, 6%);
 }
 
 /* Custom CSS for animations and hover effects */
 .member-card {
     position: relative;
+    max-width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.member-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.member-card:hover img {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+    filter: brightness(80%); /* Adjust the brightness level as needed */
 }
 
 .member-card:before {
@@ -87,18 +108,20 @@
 }
 
 .member-card-content {
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-/* Add flexibility and adjustable lengths on hover */
-.member-card:hover .member-card-content {
     transform: translateY(0);
     opacity: 1;
-    max-height: 500px; /* Adjust this value as needed */
+    max-height: 200px; /* Adjust this value as needed */
     overflow: auto; /* Add a scrollbar if content overflows */
-}</style>
+}
+
+h3{
+    color: blueviolet;
+}
+
+
+/* Add flexibility and adjustable lengths on hover */
+
+</style>
 
 <div class="family-members">
     <!-- Family member cards with images and content -->
@@ -108,8 +131,9 @@
             <h3 class="member-name">M Venkata Krishanaiah <small><i>(Rtd.school teacher)</i></small></h3>
             <p class="member-relation"><u>Relation: Father</u></p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Duis lacinia mattis metus, et auctor est efficitur a.
+                In our home, my father is like the captain. He takes care of us, supports us, 
+                and always gives good advice. He's like a superhero who helps me when I need it 
+                and cheers me on. Dad is my inspiration, and I feel lucky to have him in my life.
             </p>
         </div>
     </div>
@@ -121,8 +145,11 @@
             <h3 class="member-name">M Manjulamma <small>(Anganwadi school teacher)</small></h3>
             <p class="member-relation"><u>Relation: Mother</u></p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Duis lacinia mattis metus, et auctor est efficitur a.
+                My mom is like the heart of our family. She's caring, 
+                always there for us, and full of love. She guides us and supports us in everything we do. 
+                Mom is my biggest cheerleader, and her encouragement means the world to me. 
+                She's not just a mom; she's my best friend and a source of inspiration. 
+                I'm grateful for her love and warmth that make our home so special.
             </p>
         </div>
     </div>
@@ -131,68 +158,116 @@
     <div class="member-card">
         <img src="{% static '/images/s1.jpg' %}" alt="Sister">
         <div class="member-card-content">
-            <h3 class="member-name">Bhagya sree <small>(House Wife)</small></h3>
+            <h3 class="member-name">Bhagyasri <small>(House Wife)</small></h3>
             <p class="member-relation"><u>Relation: Sister </u></p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Duis lacinia mattis metus, et auctor est efficitur a.
+                My big sister is like a built-in best friend. She's caring, fun, and 
+                always ready to help. We share secrets and laugh together, and 
+                she gives the best advice. She's the one who understands me the most. 
+                Having her as a sister makes every day brighter. I'm lucky to have a sister like her in my life.
             </p>
         </div>
     </div>
 
     <!-- Family member cards with images and content -->
-    <div class="member-card">
-        <img src="{% static '/images/father.jpg' %}" alt="Father">
-        <div class="member-card-content">
-            <h3 class="member-name">Father</h3>
-            <p class="member-relation">Relation: Father</p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Duis lacinia mattis metus, et auctor est efficitur a.
-            </p>
-        </div>
+<div class="member-card">
+    <img src="{% static '/images/s.png' %}" alt="Sister">
+    <div class="member-card-content">
+        <h3 class="member-name">Supriya <small>(House Wife)</small></h3>
+        <p class="member-relation"><u>Relation: Sister</u></p>
+        <p>
+            My second sister is a mix of entertainer and mischief-maker. 
+            She brings so much laughter into our home with her funny antics and jokes. 
+            Sometimes, she's a little mischievous, adding a playful and spirited vibe to our family. 
+            She knows how to lighten the mood and make even the ordinary days feel special. 
+            She's like the sunshine that adds a spark of joy to our lives, 
+            and I'm grateful for the fun and laughter she brings to our family.
+        </p>
     </div>
+</div>
+
 
     
 
-    <!-- Include other family member cards here -->
-    <div class="member-card">
-        <img src="{% static '/images/mother.jpg' %}" alt="Mother">
-        <div class="member-card-content">
-            <h3 class="member-name">Mother</h3>
-            <p class="member-relation">Relation: Mother</p>
-            <p>
-                Ut ultricies eget arcu vel feugiat. Sed feugiat enim eu diam varius
-                facilisis. Integer id felis sit amet.
-            </p>
-        </div>
+<div class="member-card">
+    <img src="{% static '/images/b.jpeg' %}" alt="brother in law">
+    <div class="member-card-content">
+        <h3 class="member-name"> Babu ---bava <small>(Engineer)</small></h3>
+        <p class="member-relation"><u>Relation: brother in law</u></p>
+        <p>Meet my bava garu(babu), the fantastic guy who married my older big sister. 
+            He's like a son to us now, making our family even more awesome. 
+            He is super caring and always ready to help out. He treats my sister like a queen, and 
+            he is a good dancer. He brings good vibes and laughter to our home, and 
+            we're happy to have him around. He has become an important part of our family. 
+            Here's to more happy times and making great memories together!
+        </p>
     </div>
-
-    <div class="member-card">
-        <img src="{% static '/images/sister.jpg' %}" alt="Sister">
-        <div class="member-card-content">
-            <h3 class="member-name">Sister</h3>
-            <p class="member-relation">Relation: Sister</p>
-            <p>
-                Phasellus at libero eu metus vehicula pharetra. Vestibulum dictum
-                venenatis purus, in vehicula enim.
-            </p>
-        </div>
-    </div>
-
-    <div class="member-card">
-        <img src="{% static '/images/husband.jpg' %}" alt="Husband">
-        <div class="member-card-content">
-            <h3 class="member-name">Husband</h3>
-            <p class="member-relation">Relation: Husband</p>
-            <p>
-                Fusce iaculis lorem quis tortor volutpat, id egestas justo vulputate.
-                Nam fermentum justo ac nisi vulputate, et mattis quam ultrices.
-                Etiam non fermentum nisl.
-            </p>
-        </div>
-    </div>
-
-    <!-- Add more family members here -->
 </div>
+
+<!-- Add more family members here -->
+<div class="member-card">
+    <img src="{% static '/images/kk.jpg' %}" alt="brother in law">
+    <div class="member-card-content">
+        <h3 class="member-name">Kiran --bava <small>(Engineer)</small></h3>
+        <p class="member-relation"><u>Relation: brother in law</u></p>
+        <p>
+            Meet my bava garu (Kiran Kumar), an awesome guy who's now part of our family. 
+            He's not just a brother-in-law; he's like a brother and a friend. 
+            He brings a lot of joy and happiness to our home. Whether it's laughing together or helping out, 
+            he fits right in. He cares a lot for us. He has become an important part of our family, 
+            making our moments together even better. We're lucky to have him around.
+        </p>
+    </div>
+</div>
+
+<div class="member-card">
+    <img src="{% static '/images/h2.jpg' %}" alt="Sister">
+    <div class="member-card-content">
+        <h3 class="member-name">KIRAN <small>(Engineer)</small></h3>
+        <p class="member-relation"><u>Relation: Husband</u></p>
+        <p>
+            Meet my husband, I want to take a moment to express how profoundly important my husband is to me.
+             His presence is the heartbeat of my life, and his love is the anchor that steadies me through 
+             every storm. His kindness, support, and unwavering belief in me have transformed my world into a 
+             place of strength and joy. I am beyond grateful for the extraordinary man he is, and I just had 
+             to share with all of you how truly lucky and blessed I am to have him by my side. Here's to a 
+             lifetime of love and shared adventures with the most incredible person I know..!
+
+        </p>
+    </div>
+</div>
+
+<div class="member-card">
+    <img src="{% static '/images/so.jpg' %}" alt="Sister">
+    <div class="member-card-content">
+        <h3 class="member-name">My Son <small>(Chinnu)</small></h3>
+        <p class="member-relation"><u>Relation: Son</u></p>
+        <p>
+            My son is my joy and the brightest ray in my life. His laughter is music, and his presence is my 
+            happy place. I find love so pure and true. Every day with him is an adventure, and every moment 
+            is a treasure. He isn't just a part of my life; he is my life and my joy.
+        </p>
+    </div>
+</div>
+
+</div>
+
+
+
+
+    <img src="{% static 'images/fm.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px; padding-top: 10px;"  alt="Another Image">
+    <p>
+
+    </p>
+    <img src="{% static 'images/fm1.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/mk1.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/n.jpeg' %}" style="width: 100%; height: 800px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/kl.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/kf1.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/mk2.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+    <img src="{% static 'images/vss.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+
+    <img src="{% static 'images/kf.jpg' %}" style="width: 100%; height: 700px; border: darkviolet; border-radius: 10px;"  alt="Another Image">
+
+  
 {% endblock %}
