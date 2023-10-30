@@ -6,7 +6,7 @@ from django.shortcuts import HttpResponse
 from .models import *
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.gis.geoip2 import GeoIP2
+#from django.contrib.gis.geoip2 import GeoIP2
 
 from .models import Contact
 
